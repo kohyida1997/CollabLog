@@ -205,7 +205,7 @@ func sendReply(bot *tgbotapi.BotAPI, reply string, chatID int64, messageID int) 
 }
 
 func formatDate(t time.Time) string {
-	return fmt.Sprintf("%d-%02d-%02d %02d:%02d:%02d",
+	return fmt.Sprintf("%d-%02d-%02d | %02d:%02d:%02d",
 		t.Year(), t.Month(), t.Day(),
 		t.Hour(), t.Minute(), t.Second())
 }
