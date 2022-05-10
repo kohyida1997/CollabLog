@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"time"
 
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
@@ -27,6 +28,13 @@ func (log *Log) SetEditorTrue(user tgbotapi.User) {
 
 func (log *Log) SetNewEditedTimeNow() {
 	log.LastEdited = time.Now()
+}
+
+func (log *Log) GetFormattedLatestEditTime() string {
+	t := log.LastEdited
+	return fmt.Sprintf("%d-%02d-%02d | %02d:%02d:%02d",
+		t.Year(), t.Month(), t.Day(),
+		t.Hour(), t.Minute(), t.Second())
 }
 
 func NewLog(title string, creator tgbotapi.User) *Log {

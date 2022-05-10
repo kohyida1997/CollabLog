@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"os"
-	"time"
 
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
 )
@@ -42,7 +41,6 @@ func main() {
 			switch receivedCommand {
 			case "new": /* Handle make new Log */
 				reply := state.MakeNewLog(update)
-				/* Reply to user */
 				sendReply(bot, reply, update.Message.Chat.ID, update.Message.MessageID)
 
 			case "created": /* List all logs I created */
@@ -92,10 +90,4 @@ func sendReply(bot *tgbotapi.BotAPI, reply string, chatID int64, messageID int) 
 	if _, err := bot.Send(msg); err != nil {
 		panic(err)
 	}
-}
-
-func formatDate(t time.Time) string {
-	return fmt.Sprintf("%d-%02d-%02d | %02d:%02d:%02d",
-		t.Year(), t.Month(), t.Day(),
-		t.Hour(), t.Minute(), t.Second())
 }

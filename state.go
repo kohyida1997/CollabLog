@@ -125,7 +125,7 @@ func (s *State) ReadLog(update tgbotapi.Update) string {
 		return reply
 	}
 
-	return fmt.Sprintf("Success! Reading <b>%s</b>:\n\n%s\n\n<i>Last Edited at %s</i>", logTitle, s.AllLogs[logTitle].Text, formatDate(s.AllLogs[logTitle].LastEdited))
+	return fmt.Sprintf("Success! Reading <b>%s</b>:\n\n%s\n\n<i>Last Edited at %s</i>", logTitle, s.AllLogs[logTitle].Text, s.AllLogs[logTitle].GetFormattedLatestEditTime())
 
 }
 
